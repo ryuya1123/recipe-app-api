@@ -15,7 +15,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
         	python-version: '3.8'
-        	architecture: 'x64'
 
       # Runs a single command using the runners shell
       - name: Run a docker-compose
