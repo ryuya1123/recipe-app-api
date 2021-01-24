@@ -1,0 +1,15 @@
+name: Python CI
+
+jobs:
+  run_python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+          architecture: 'x64'
+      - runs:
+        using: 'docker'
+        image: 'Dockerfile'
+      - run: pip install docker-compose
+      - run: docker-compose run app sh -c "python manage.py test && flake8" 
