@@ -22,11 +22,8 @@ jobs:
           architecture: 'x64'
 
       # Runs a single command using the runners shell
-      name: Run a docker-compose
-      runs:
-        using: 'docker'
-        image: 'Dockerfile'
-      run: pip install docker-compose
-      run: docker-compose run app sh -c "python manage.py test && flake8"
+      - name: Run a docker-compose
+      	run: pip install docker-compose
+      	run: docker-compose run app sh -c "python manage.py test && flake8"
         	
 			
