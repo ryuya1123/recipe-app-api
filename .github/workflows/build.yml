@@ -23,7 +23,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a docker-compose
-      	- runs:
+      	runs:
           using: 'docker'
           image: 'Dockerfile'
         run: pip install docker-compose
