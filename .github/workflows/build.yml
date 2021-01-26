@@ -2,6 +2,8 @@
 
 name: Python CI
 
+on: [push]
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -14,7 +16,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
@@ -22,8 +24,9 @@ jobs:
           architecture: 'x64'
 
       # Runs a single command using the runners shell
+      - name: Run a docker-compose install
+        run: |
+          pip install docker-compose
+         
       - name: Run a docker-compose
-      	run: pip install docker-compose
-      	run: docker-compose run app sh -c "python manage.py test && flake8"
-        	
-			
+        run: docker-compose run app sh -c "python manage.py test && flake8"
